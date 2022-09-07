@@ -10,14 +10,14 @@ class SQLHelper {
   static Future<void> createTables(sql.Database database) async {
     // Department Table
     await database.execute("""CREATE TABLE Department(
-    department_id INTEGER NOT NULL PRIMARY KEY,
+    department_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     department_name varchar(255) NOT NULL
     )
       """);
 
     // Employee Table
     await database.execute("""CREATE TABLE Employee(
-    employee_id INTEGER NOT NULL PRIMARY KEY,
+    employee_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     employee_name varchar(255) NOT NULL,
     phone_number char(10),
     job_title TEXT varchar(255) NOT NULL,
@@ -31,7 +31,7 @@ class SQLHelper {
 
     // Student Table
     await database.execute("""CREATE TABLE Student(
-      student_id INTEGER NOT NULL PRIMARY KEY,
+      student_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
       student_name varchar(255) NOT NULL,
       phone_number char(10),
       city varchar(255),
@@ -42,7 +42,7 @@ class SQLHelper {
 
     // Course Table
     await database.execute("""CREATE TABLE Course(
-    course_id INTEGER NOT NULL PRIMARY KEY,
+    course_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     course_name varchar(70) NOT NULL,
     employee_id,
     department_id,
@@ -53,7 +53,7 @@ class SQLHelper {
 
     // CourseStudent Table
     await database.execute("""CREATE TABLE CourseStudent(
-    id INTEGER NOT NULL PRIMARY KEY,
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     course_id,
     student_id,
     FOREIGN KEY (course_id) REFERENCES Course(course_id),
