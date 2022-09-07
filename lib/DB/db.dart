@@ -8,8 +8,6 @@ class SQLHelper {
   }
 
   static Future<void> createTables(sql.Database database) async {
-    await database.execute("""PRAGMA foreign_keys = ON;""");
-
     // Department Table
     await database.execute("""CREATE TABLE Department(
     department_id INTEGER NOT NULL PRIMARY KEY,
@@ -22,6 +20,7 @@ class SQLHelper {
     employee_id INTEGER NOT NULL PRIMARY KEY,
     employee_name varchar(255) NOT NULL,
     phone_number char(10),
+    job_title TEXT varchar(255) NOT NULL,
     city varchar(255),
     state varchar(25),
     zip_code varchar(255),
